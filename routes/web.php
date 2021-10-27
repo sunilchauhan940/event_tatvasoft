@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\EventController;
+use Illuminate\Console\Scheduling\Event;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+// Route::resource('/', 'EventController');
+Route::get('/create', 'EventController@create')->name('events.create');
+Route::get('/', 'EventController@index');
+Route::post('/', 'EventController@store')->name('events.store');
+Route::get('/{event}', 'EventController@show')->name('events.show');
